@@ -1,0 +1,64 @@
+/* Header Styles */
+.cv-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 60px;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa; /* Light professional background */
+  color: #2c3e50;
+}
+
+.cv-header {
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1f2a38; /* Darker professional navy */
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-item strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.contact-item a {
+  color: #007b7f; /* Professional teal */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #005f63;
+  text-decoration: underline;
+}
+
+.separator {
+  color: #999;
+  margin: 0 5px;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #2c3e50, transparent);
+  margin-top: 20px;
+  border-radius: 5px;
+}
