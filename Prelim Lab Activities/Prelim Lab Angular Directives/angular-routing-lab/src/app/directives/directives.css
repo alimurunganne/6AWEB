@@ -1,0 +1,214 @@
+/* Simple Cat Theme - Directives Component */
+
+:host {
+  display: block;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fff8dc 0%, #ffdab9 100%);
+  min-height: 100vh;
+  font-family: 'Comic Sans MS', Arial, sans-serif;
+}
+
+/* Headings */
+h2 {
+  color: #ff8c00;
+  font-size: 2em;
+  margin: 20px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Table headers */
+thead tr {
+  background: linear-gradient(135deg, #ff8c00 0%, #ffa000 100%);
+}
+
+th {
+  padding: 15px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 3px solid #ff8c00;
+}
+
+th:first-child {
+  border-top-left-radius: 15px;
+}
+
+th:last-child {
+  border-top-right-radius: 15px;
+}
+
+/* Table cells */
+td {
+  padding: 15px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+tbody tr {
+  transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+  background: rgba(255, 140, 0, 0.1);
+  transform: scale(1.02);
+}
+
+tbody td {
+  border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+/* Paragraphs inside tables */
+table p {
+  margin: 10px 0;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ff8c00;
+}
+
+/* List styling */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+li {
+  padding: 12px 20px;
+  margin: 8px 0;
+  background: white;
+  border-radius: 15px;
+  border-left: 5px solid #ff8c00;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  transform: translateX(10px);
+  border-left-color: #ffa000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Input field styling */
+input[type="text"] {
+  padding: 12px 20px;
+  font-size: 1.1em;
+  border: 3px solid #ff8c00;
+  border-radius: 20px;
+  background: white;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus {
+  border-color: #ffa000;
+  box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* Button styling */
+button {
+  margin: 10px;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #ff8c00 0%, #ffa000 100%);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+}
+
+button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Active/Inactive status styling */
+table p {
+  color: #333;
+}
+
+tbody td p {
+  padding: 8px 16px;
+  font-size: 1em;
+  min-width: 80px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  table {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 10px 20px;
+    margin: 5px;
+  }
+
+  input[type="text"] {
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  li {
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    font-size: 0.85em;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}

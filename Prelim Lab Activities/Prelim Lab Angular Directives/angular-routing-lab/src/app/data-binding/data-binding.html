@@ -1,0 +1,42 @@
+<h1>{{ message }}</h1>
+
+<img [src]="imageURL" [width]="500" [height]="500">
+
+<p [style.color]="textColor">This text is blue!</p>
+
+<p [class.highlighted]="isHighlighted">This text is highlighted!</p>
+
+<!-- Two-way binding -->
+<input [(ngModel)]="yourName" placeholder="Enter your name">
+<p>Hello, {{ yourName }}!</p>
+
+<hr>
+
+<!-- Event Binding -->
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+
+<p>Count: {{ count }}</p>
+
+<!-- Angular Data Binding (Part 2)  -->
+
+<h1>{{ studentName }}</h1>
+
+<h2>Property Binding</h2>
+<section>
+  <h2 [innerHTML]="'h2-Property Binding'"></h2>
+  <img [src]="imageUrl" width="200" />
+  <br /><br />
+  <button [disabled]="isDisabled">Submit</button>
+</section>
+
+<h2>Class Binding</h2>
+<h2 [class.passing]="isPassing" [class.failing]="!isPassing">h2-Class Binding</h2>
+<p>Student Result: {{ isPassing ? 'Passed' : 'Failed' }}</p>
+
+<h2>Style Binding</h2>
+<div [style.background]="boxColor"
+     [style.width]="boxSize"
+     [style.height]="boxSize"
+     class="box">
+</div>
