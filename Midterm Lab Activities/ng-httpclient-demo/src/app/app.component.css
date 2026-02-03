@@ -1,0 +1,171 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fef3e2;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Headings */
+h2 {
+  color: #5a4a6a;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #e8dff5;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border: none;
+}
+
+thead {
+  background: #c8b6e2;
+}
+
+thead tr th {
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+  padding: 1rem;
+  text-align: left;
+  border: none;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #fce4ec;
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(200, 182, 226, 0.3);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 1rem;
+  color: #4a5568;
+  font-size: 0.95rem;
+  border: none;
+}
+
+tbody td:first-child {
+  font-weight: 600;
+  color: #9575cd;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c8b6e2, transparent);
+  margin: 3rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  thead tr th,
+  tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  tbody td:first-child {
+    width: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead tr th,
+  tbody td {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+/* Loading Animation (Optional - if you want to add a loading state) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+table {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Cache Indicator Badge (Optional enhancement) */
+h2::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #a5d6a7;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

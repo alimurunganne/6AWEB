@@ -1,0 +1,37 @@
+<h2>User List (Cached)</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Challenge: Top 5 Manga</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Rank</th>   <!-- clearly shows TOP 5 -->
+      <th>Title</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of manga">
+      <td>{{ m.rank }}</td>
+      <td>{{ m.title }}</td>
+      <td>{{ m.score }}</td>
+    </tr>
+  </tbody>
+</table>
