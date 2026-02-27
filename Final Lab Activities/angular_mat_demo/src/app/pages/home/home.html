@@ -1,0 +1,142 @@
+<div class="page-header">
+  <p class="header-eyebrow">✦ Angular Material ✦</p>
+  <h1 class="header-title">Reactive Form</h1>
+  <p class="header-sub">Please fill in your details</p>
+  <div class="header-divider"></div>
+</div>
+
+<div class="form-card">
+
+  <div class="form-section">
+    <p class="section-label">✦ Account</p>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Username</mat-label>
+      <mat-icon matPrefix class="field-icon">person_outline</mat-icon>
+      <input matInput [(ngModel)]="name" placeholder="Enter your username" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email Address</mat-label>
+      <mat-icon matPrefix class="field-icon">mail_outline</mat-icon>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        (blur)="updateErrorMessage()"
+        required
+      />
+      <mat-error>{{ errorMessage() }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <mat-icon matPrefix class="field-icon">lock_outline</mat-icon>
+      <input
+        matInput
+        [type]="hide() ? 'password' : 'text'"
+        [formControl]="password"
+        (blur)="updatePasswordErrorMessage()"
+        autocomplete="new-password"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error>{{ passwordErrorMessage() }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="luxury-divider"><span>✦</span></div>
+
+  <div class="form-section">
+    <p class="section-label">✦ Personal Details</p>
+    <label class="field-label">Gender</label>
+    <mat-radio-group aria-label="Select gender" [(ngModel)]="gender" class="radio-group">
+      <mat-radio-button value="1">Male</mat-radio-button>
+      <mat-radio-button value="2">Female</mat-radio-button>
+      <mat-radio-button value="3">Others</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="form-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Address</mat-label>
+      <mat-icon matPrefix class="field-icon">home_outline</mat-icon>
+      <input matInput [(ngModel)]="address" placeholder="Enter your address" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Birth Date</mat-label>
+      <mat-icon matPrefix class="field-icon">calendar_today</mat-icon>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="birthDate" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="luxury-divider"><span>✦</span></div>
+
+  <div class="form-section">
+    <p class="section-label">✦ Skills</p>
+    <label class="field-label">
+      Angular Skill Level — <strong>{{ sliderValue() }}</strong>
+    </label>
+    <mat-slider min="1" max="10" step="1" class="full-width">
+      <input matSliderThumb [(ngModel)]="sliderValue" />
+    </mat-slider>
+  </div>
+
+  <div class="luxury-divider"><span>✦</span></div>
+
+  <div class="submit-container">
+    <button
+      mat-flat-button
+      [disabled]="!isFormFilled"
+      [class.filled]="isFormFilled"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+
+  @if (submittedData()) {
+    <div class="submitted-card">
+      <p class="submitted-title">✦ You have entered</p>
+      <div class="submitted-grid">
+        <span class="submitted-key">Username</span>
+        <span class="submitted-val">{{ submittedData().name }}</span>
+        <span class="submitted-key">Email</span>
+        <span class="submitted-val">{{ submittedData().email }}</span>
+        <span class="submitted-key">Password</span>
+        <span class="submitted-val">{{ submittedData().password }}</span>
+        <span class="submitted-key">Gender</span>
+        <span class="submitted-val">{{ submittedData().gender }}</span>
+        <span class="submitted-key">Address</span>
+        <span class="submitted-val">{{ submittedData().address }}</span>
+        <span class="submitted-key">Birth Date</span>
+        <span class="submitted-val">{{ submittedData().birthDate }}</span>
+        <span class="submitted-key">Skill Level</span>
+        <span class="submitted-val">{{ submittedData().skillLevel }}</span>
+      </div>
+    </div>
+  }
+
+</div>
+
+<div class="page-footer">
+  <p>✦ Angular Material · Reactive Form ✦</p>
+</div>

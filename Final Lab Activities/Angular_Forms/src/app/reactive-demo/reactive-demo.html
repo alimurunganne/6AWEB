@@ -1,0 +1,195 @@
+<div class="form-wrapper">
+  <h2 class="form-title">Reactive Form Demo</h2>
+
+  <!-- ── SUCCESS MESSAGE ── -->
+  <div *ngIf="submitted" class="alert-success">
+    <h5>Submitted Successfully!</h5>
+    <div class="summary-grid">
+      <p><strong>Username</strong><span>{{ form.value.username }}</span></p>
+      <p><strong>Email</strong><span>{{ form.value.email }}</span></p>
+      <p><strong>Role</strong><span>{{ form.value.role }}</span></p>
+      <p><strong>Gender</strong><span>{{ form.value.gender }}</span></p>
+      <p><strong>Status</strong><span>{{ form.value.status }}</span></p>
+      <p><strong>Age</strong><span>{{ form.value.age }}</span></p>
+      <p><strong>Department</strong><span>{{ form.value.department }}</span></p>
+      <p><strong>Agreed to Terms</strong><span>{{ form.value.agreeToTerms ? 'Yes' : 'No' }}</span></p>
+      <p class="full-width"><strong>Comments</strong><span>{{ form.value.comments || '—' }}</span></p>
+    </div>
+    <button class="btn-secondary" (click)="onReset()">Reset Form</button>
+  </div>
+
+  <!-- ── REACTIVE FORM ── -->
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+
+    <!-- Section: Account Info -->
+    <p class="section-label">Account Information</p>
+
+    <!-- Username -->
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="isInvalid('username')"
+        placeholder="Enter username"
+        formControlName="username" />
+      <small *ngIf="isInvalid('username')" class="field-error">
+        <span *ngIf="getError('username', 'required')">Username is required.</span>
+        <span *ngIf="getError('username', 'pattern')">4–12 chars, letters/numbers/_ only.</span>
+      </small>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="isInvalid('email')"
+        type="email"
+        placeholder="Enter email"
+        formControlName="email" />
+      <small *ngIf="isInvalid('email')" class="field-error">
+        <span *ngIf="getError('email', 'required')">Email is required.</span>
+        <span *ngIf="getError('email', 'email')">Enter a valid email address.</span>
+      </small>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="isInvalid('password')"
+        type="password"
+        placeholder="Enter password"
+        formControlName="password" />
+      <small *ngIf="isInvalid('password')" class="field-error">
+        <span *ngIf="getError('password', 'required')">Password is required.</span>
+        <span *ngIf="getError('password', 'pattern')">Min 8 chars with uppercase, lowercase & number.</span>
+      </small>
+    </div>
+
+    <!-- Two-column: Role + Age -->
+    <div class="two-col">
+
+      <!-- Role -->
+      <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select
+          class="form-select"
+          [class.is-invalid]="isInvalid('role')"
+          formControlName="role">
+          <option value="" disabled>Select role</option>
+          @for (r of roles; track r) {
+            <option [value]="r">{{ r }}</option>
+          }
+        </select>
+        <small *ngIf="isInvalid('role')" class="field-error">Role is required.</small>
+      </div>
+
+      <!-- NEW FIELD 1: Age -->
+      <div class="mb-3">
+        <label class="form-label">Age</label>
+        <input
+          class="form-control"
+          [class.is-invalid]="isInvalid('age')"
+          type="number"
+          placeholder="e.g. 25"
+          formControlName="age" />
+        <small *ngIf="isInvalid('age')" class="field-error">
+          <span *ngIf="getError('age', 'required')">Age is required.</span>
+          <span *ngIf="getError('age', 'min')">Minimum age is 18.</span>
+          <span *ngIf="getError('age', 'max')">Maximum age is 65.</span>
+        </small>
+      </div>
+
+    </div>
+
+    <!-- NEW FIELD 2: Department -->
+    <div class="mb-3">
+      <label class="form-label">Department</label>
+      <select
+        class="form-select"
+        [class.is-invalid]="isInvalid('department')"
+        formControlName="department">
+        <option value="" disabled>Select department</option>
+        @for (d of departments; track d) {
+          <option [value]="d">{{ d }}</option>
+        }
+      </select>
+      <small *ngIf="isInvalid('department')" class="field-error">Department is required.</small>
+    </div>
+
+    <!-- Section: Personal Info -->
+    <p class="section-label">Personal Information</p>
+
+    <!-- Gender -->
+    <div class="mb-3">
+      <label class="form-label d-block">Gender</label>
+      <div class="radio-group">
+        @for (g of genders; track g) {
+          <label class="radio-pill">
+            <input
+              type="radio"
+              [value]="g"
+              formControlName="gender"> {{ g }}
+          </label>
+        }
+      </div>
+      <small *ngIf="isInvalid('gender')" class="field-error">Gender is required.</small>
+    </div>
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label class="form-label d-block">Status</label>
+      <div class="radio-group">
+        @for (s of statuses; track s) {
+          <label class="radio-pill">
+            <input
+              type="radio"
+              [value]="s"
+              formControlName="status"> {{ s }}
+          </label>
+        }
+      </div>
+      <small *ngIf="isInvalid('status')" class="field-error">Status is required.</small>
+    </div>
+
+    <!-- Comments -->
+    <div class="mb-3">
+      <label class="form-label">Comments / Notes</label>
+      <textarea
+        class="form-control"
+        placeholder="Any additional notes..."
+        formControlName="comments"
+        rows="3">
+      </textarea>
+    </div>
+
+    <!-- NEW FIELD 3: Agree to Terms -->
+    <div class="mb-3">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          formControlName="agreeToTerms"
+          class="checkbox-input">
+        <span class="checkbox-label">
+          I agree to the <a href="#" class="terms-link">Terms and Conditions</a>
+        </span>
+      </label>
+      <small *ngIf="isInvalid('agreeToTerms')" class="field-error">
+        You must agree to the terms before submitting.
+      </small>
+    </div>
+
+    <!-- Submit -->
+    <div class="d-grid">
+      <button
+        class="btn-success"
+        type="submit"
+        [disabled]="form.invalid">
+        Submit
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,218 @@
+<div class="form-wrapper">
+  <h2 class="form-title">{{ title }}</h2>
+
+  <!-- ── SUCCESS MESSAGE ── -->
+  <div *ngIf="submitted" class="alert-success">
+    <h5>Submitted Successfully!</h5>
+    <div class="summary-grid">
+      <p><strong>Username</strong><span>{{ username }}</span></p>
+      <p><strong>Email</strong><span>{{ email }}</span></p>
+      <p><strong>Role</strong><span>{{ role }}</span></p>
+      <p><strong>Gender</strong><span>{{ gender }}</span></p>
+      <p><strong>Status</strong><span>{{ status }}</span></p>
+      <p><strong>Age</strong><span>{{ age }}</span></p>
+      <p><strong>Department</strong><span>{{ department }}</span></p>
+      <p><strong>Agreed to Terms</strong><span>{{ agreeToTerms ? 'Yes' : 'No' }}</span></p>
+      <p class="full-width"><strong>Comments</strong><span>{{ comments || '—' }}</span></p>
+    </div>
+    <button class="btn-secondary" (click)="onReset()">Reset Form</button>
+  </div>
+
+  <!-- ── FORM ── -->
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="!submitted">
+
+    <!-- Section: Account Info -->
+    <p class="section-label">Account Information</p>
+
+    <!-- Username -->
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input
+        class="form-control"
+        type="text"
+        name="username"
+        [(ngModel)]="username"
+        placeholder="Enter username"
+        required
+        #usernameField="ngModel">
+      <small *ngIf="usernameField.invalid && usernameField.touched" class="field-error">
+        Username is required.
+      </small>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Enter email"
+        required
+        email
+        #emailField="ngModel">
+      <small *ngIf="emailField.invalid && emailField.touched" class="field-error">
+        <span *ngIf="emailField.errors?.['required']">Email is required.</span>
+        <span *ngIf="emailField.errors?.['email']">Enter a valid email address.</span>
+      </small>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Enter password"
+        required
+        minlength="6"
+        #passwordField="ngModel">
+      <small *ngIf="passwordField.invalid && passwordField.touched" class="field-error">
+        <span *ngIf="passwordField.errors?.['required']">Password is required.</span>
+        <span *ngIf="passwordField.errors?.['minlength']">Minimum 6 characters required.</span>
+      </small>
+    </div>
+
+    <!-- Two-column: Role + Age -->
+    <div class="two-col">
+
+      <!-- Role -->
+      <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select
+          class="form-select"
+          name="role"
+          [(ngModel)]="role"
+          required
+          #roleField="ngModel">
+          <option value="" disabled selected>Select role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Guest">Guest</option>
+        </select>
+        <small *ngIf="roleField.invalid && roleField.touched" class="field-error">
+          Role is required.
+        </small>
+      </div>
+
+      <!-- ── NEW FIELD 1: Age ── -->
+      <div class="mb-3">
+        <label class="form-label">Age</label>
+        <input
+          class="form-control"
+          type="number"
+          name="age"
+          [(ngModel)]="age"
+          placeholder="e.g. 25"
+          required
+          min="18"
+          max="65"
+          #ageField="ngModel">
+        <small *ngIf="ageField.invalid && ageField.touched" class="field-error">
+          <span *ngIf="ageField.errors?.['required']">Age is required.</span>
+          <span *ngIf="ageField.errors?.['min']">Minimum age is 18.</span>
+          <span *ngIf="ageField.errors?.['max']">Maximum age is 65.</span>
+        </small>
+      </div>
+
+    </div>
+
+    <!-- ── NEW FIELD 2: Department ── -->
+    <div class="mb-3">
+      <label class="form-label">Department</label>
+      <select
+        class="form-select"
+        name="department"
+        [(ngModel)]="department"
+        required
+        #deptField="ngModel">
+        <option value="" disabled selected>Select department</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="Finance">Finance</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Operations">Operations</option>
+        <option value="IT">IT</option>
+      </select>
+      <small *ngIf="deptField.invalid && deptField.touched" class="field-error">
+        Department is required.
+      </small>
+    </div>
+
+    <!-- Section: Personal Info -->
+    <p class="section-label">Personal Information</p>
+
+    <!-- Gender -->
+    <div class="mb-3">
+      <label class="form-label d-block">Gender</label>
+      <div class="radio-group">
+        <label class="radio-pill">
+          <input type="radio" name="gender" value="Male" [(ngModel)]="gender" required> Male
+        </label>
+        <label class="radio-pill">
+          <input type="radio" name="gender" value="Female" [(ngModel)]="gender" required> Female
+        </label>
+        <label class="radio-pill">
+          <input type="radio" name="gender" value="Other" [(ngModel)]="gender" required> Other
+        </label>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label class="form-label d-block">Status</label>
+      <div class="radio-group">
+        <label class="radio-pill">
+          <input type="radio" name="status" value="Permanent" [(ngModel)]="status" required> Permanent
+        </label>
+        <label class="radio-pill">
+          <input type="radio" name="status" value="Probationary" [(ngModel)]="status" required> Probationary
+        </label>
+      </div>
+    </div>
+
+    <!-- Comments -->
+    <div class="mb-3">
+      <label class="form-label">Comments / Notes</label>
+      <textarea
+        class="form-control"
+        name="comments"
+        [(ngModel)]="comments"
+        placeholder="Any additional notes..."
+        rows="3">
+      </textarea>
+    </div>
+
+    <!-- ── NEW FIELD 3: Agree to Terms (Checkbox) ── -->
+    <div class="mb-3">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="agreeToTerms"
+          [(ngModel)]="agreeToTerms"
+          required
+          #termsField="ngModel"
+          class="checkbox-input">
+        <span class="checkbox-label">
+          I agree to the <a href="#" class="terms-link">Terms and Conditions</a>
+        </span>
+      </label>
+      <small *ngIf="termsField.invalid && termsField.touched" class="field-error">
+        You must agree to the terms before submitting.
+      </small>
+    </div>
+
+    <!-- Submit -->
+    <div class="d-grid">
+      <input
+        class="btn-primary"
+        type="submit"
+        value="Submit"
+        [disabled]="!myForm.valid">
+    </div>
+
+  </form>
+</div>

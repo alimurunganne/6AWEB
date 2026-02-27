@@ -1,0 +1,82 @@
+/* ============================================================
+   GLOBAL — Exact Palette
+   #F0EFEE  #EFD0D0  #5D1B34  #073A3A  #0B1C1D
+   ============================================================ */
+
+
+:root {
+  --off-white: #F0EFEE;
+  --blush:     #EFD0D0;
+  --burgundy:  #5D1B34;
+  --teal:      #073A3A;
+  --ink:       #0B1C1D;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: var(--off-white);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--ink) !important;
+  border-bottom: 3px solid var(--burgundy);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.05em;
+  color: var(--off-white) !important;
+}
+
+.nav-link {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: rgba(240, 239, 238, 0.45) !important;
+  padding: 0.4rem 1rem !important;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--blush) !important;
+}
+
+.nav-link.fw-bold,
+.nav-link.active {
+  color: var(--blush) !important;
+  border-bottom-color: var(--burgundy);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--blush); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--burgundy); }
