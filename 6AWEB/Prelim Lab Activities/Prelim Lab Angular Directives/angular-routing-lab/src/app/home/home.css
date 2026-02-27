@@ -1,0 +1,135 @@
+/* ==============================
+Host & Page Setup
+============================== */
+:host {
+display: block;
+min-height: 100vh;
+padding: 60px 20px;
+font-family: 'Comic Sans MS', Arial, sans-serif;
+background: linear-gradient(135deg, #fff8dc 0%, #ffdab9 100%);
+}
+
+/* ==============================
+Container Styling
+============================== */
+.home-container {
+max-width: 800px;
+margin: 0 auto;
+padding: 40px;
+background: rgba(255, 255, 255, 0.8);
+border-radius: 30px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================
+Headings
+============================== */
+h1 {
+text-align: center;
+color: #ff8c00;
+font-size: 2.5em;
+margin: 20px 0;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+text-align: center;
+color: #ff8c00;
+font-size: 2em;
+margin: 30px 0 20px;
+}
+
+h3 {
+font-size: 1.4em;
+color: #ffa000;
+margin: 25px 0 15px;
+padding-left: 15px;
+border-left: 5px solid #ff8c00;
+}
+
+/* ==============================
+Paragraphs & Text
+============================== */
+p {
+font-size: 1.1em;
+color: #333;
+line-height: 1.6;
+margin: 15px 0;
+padding: 15px 20px;
+text-align: center;
+}
+
+p strong {
+color: #ff8c00;
+}
+
+/* Special Profile Paragraph after H2 */
+h2 + p {
+background: #fff;
+border: 3px solid #ff8c00;
+border-radius: 20px;
+padding: 25px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+text-align: justify;
+}
+
+/* ==============================
+Divider
+============================== */
+hr {
+border: none;
+border-top: 3px dashed #ff8c00;
+margin: 30px 0;
+opacity: 0.5;
+}
+
+/* ==============================
+Lists
+============================== */
+ul {
+list-style: none;
+padding: 0;
+margin: 15px 0;
+}
+
+li {
+padding: 12px 20px;
+margin: 10px 0;
+background: #fff;
+border-left: 5px solid #ff8c00;
+border-radius: 15px;
+font-size: 1.05em;
+color: #333;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==============================
+Responsive Design
+============================== */
+@media (max-width: 768px) {
+.home-container {
+padding: 30px 20px;
+}
+
+h1 {
+font-size: 2em;
+}
+
+h2 {
+font-size: 1.6em;
+}
+
+h3 {
+font-size: 1.2em;
+}
+
+p {
+font-size: 1em;
+padding: 12px 15px;
+}
+
+li {
+font-size: 1em;
+padding: 10px 15px;
+}
+}

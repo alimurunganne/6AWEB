@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Home</h1>
+  <h2>Welcome!</h2>
+  <p>This portal pulls remote records and shares them across pages.</p>
+  <h3>Latest Updates</h3>
+  <div *ngIf="latestPosts$ | async as posts; else loading">
+    <div *ngFor="let post of posts" class="post-card">
+      <h4>{{ post.title | uppercase }}</h4>
+      <p>{{ post.body | truncate: 100 }}</p>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="loading">Loading latest updates...</div>
+  </ng-template>
+</div>

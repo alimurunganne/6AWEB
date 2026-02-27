@@ -1,0 +1,43 @@
+<div class="home-container">
+
+  <!-- Personal Info -->
+  <h1>{{ fullName }}</h1>
+  <p><strong>Location:</strong> {{ location }}</p>
+  <p><strong>Mobile:</strong> {{ mobile }}</p>
+  <p><strong>Email:</strong> {{ email }}</p>
+
+  <hr />
+
+  <!-- Personal Profile -->
+  <h2>Personal Profile</h2>
+  <p>{{ personalProfile }}</p>
+
+  <hr />
+
+  <!-- Key Skills -->
+  <h2>Key Skills</h2>
+  <ul>
+    <li *ngFor="let skill of keySkills">{{ skill }}</li>
+  </ul>
+
+  <hr />
+
+  <!-- Technical Proficiencies -->
+  <h2>Technical Proficiencies</h2>
+
+  <h3>Design Tools</h3>
+  <ul>
+    <li *ngFor="let item of technicalProficiencies.designTools">{{ item }}</li>
+  </ul>
+
+  <h3>Development</h3>
+  <ul>
+    <li *ngFor="let item of technicalProficiencies.development">{{ item }}</li>
+  </ul>
+
+  <h3>Tools & Platforms</h3>
+  <ul>
+    <li *ngFor="let item of technicalProficiencies.toolsAndPlatforms">{{ item }}</li>
+  </ul>
+
+</div>

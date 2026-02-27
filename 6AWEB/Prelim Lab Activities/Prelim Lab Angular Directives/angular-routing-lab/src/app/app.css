@@ -1,0 +1,95 @@
+/* Simple Cat Navigation Bar */
+
+nav {
+  background: linear-gradient(135deg, #ffb347 0%, #ffd9b3 100%);
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 4px solid #ff8c00;
+}
+
+/* Cat emojis on sides */
+nav::before {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+}
+
+nav::after {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+}
+
+nav a {
+  color: #8b4513;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0 10px;
+  padding: 10px 25px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px solid transparent;
+}
+
+nav a:hover {
+  background: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+  color: #ff8c00;
+  border-color: #ff8c00;
+}
+
+/* Active/Current page */
+nav a.active {
+  background: #ff8c00;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5);
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav::before,
+  nav::after {
+    font-size: 1.5em;
+    left: 10px;
+  }
+
+  nav::after {
+    right: 10px;
+  }
+
+  nav a {
+    font-size: 1em;
+    margin: 5px;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav::before,
+  nav::after {
+    display: none;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px auto;
+    max-width: 200px;
+  }
+}

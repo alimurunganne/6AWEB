@@ -1,0 +1,82 @@
+<!-- <p>pipes-demo works!</p> -->
+<h2>Adding the parameters</h2>
+<p>Current time is: {{presentDate | date}} </p>
+
+<!-- parameters in date -->
+<h2> Parameters in Date</h2>
+<div>
+  This is a short date :- {{presentDate | date:'shortDate' }} <br/>
+  This line shows the full date :- {{presentDate | date:'fullDate' }} <br/>
+  This will show a formatted date :- {{presentDate | date:'MM/dd/yyyy'}} <br/>
+  This indicates the hours and minutes:- {{presentDate | date:'h:mm'}}
+  <p>Anne Nichole Alimurung </p>
+</div>
+
+<!-- async pipes -->
+
+<h2> Async Pipes</h2>
+<div>
+  Second changing in time: {{ time$ | async | date:'mediumTime' }}<br/>
+</div>
+
+<!-- chained pipes -->
+<h2> Chained Pipes </h2>
+<div>
+  Date with uppercase :- {{presentDate | date:'fullDate' | uppercase}} <br/>
+  Date with lowercase :- {{presentDate | date:'medium' | lowercase}} <br/>
+</div>
+
+  <hr>
+
+<!-- currency pipe -->
+<h3> Currency Pipe</h3>
+<p>Price: {{ price | currency:'':true }}</p>
+<p>Price: {{ price | currency:'PHP' }}</p>
+
+<hr>
+
+<!-- slice pipe -->
+<h3> Slice Pipe</h3>
+<div>
+  <h3>Start index:- {{Fruits | slice:2}}</h3>
+  <h4>Start and end index:- {{Fruits | slice:1:4}}</h4>
+  <h5>Negative index:- {{Fruits | slice:-2}}</h5>
+  <h6>Negative start and end index:- {{Fruits | slice:-4:-2}}</h6>
+</div>
+
+<hr>
+
+<!-- decimal pipe -->
+<h3>Decimal Pipe</h3>
+<div style="text-align:center">
+  <p>Apply formatting: - {{ decimalNum1 | number:'1.2-3' }} </p>
+  <p>Apply formatting: - {{ decimalNum2 | number:'1.2-3' }} </p>
+</div>
+
+<hr>
+
+<!-- TitleCase Pipe -->
+<h3>TitleCase Pipe</h3>
+<div style="text-align:center">
+  <p>{{ userName | titlecase }}</p>
+</div>
+
+<hr>
+
+<!-- Percent Pipe -->
+<h3>Percent Pipe</h3>
+<div style="text-align:center">
+  <p>Attendance: {{ attendance | percent }}</p>
+</div>
+
+<hr>
+
+<!-- KeyValue Pipe -->
+<h3>KeyValue Pipe</h3>
+<div style="text-align:center">
+  <ul>
+    <li *ngFor="let item of student | keyvalue">
+      {{ item.key }} : {{ item.value }}
+    </li>
+  </ul>
+</div>
