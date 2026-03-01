@@ -88,6 +88,37 @@
     </mat-form-field>
   </div>
 
+  <!-- ── NEW 1: mat-select (Country) ─────────────────────────── -->
+  <div class="form-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Country</mat-label>
+      <mat-icon matPrefix class="field-icon">public</mat-icon>
+      <mat-select [(ngModel)]="country" placeholder="Select your country">
+        @for (c of countries; track c.code) {
+          <mat-option [value]="c.code">{{ c.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="luxury-divider"><span>✦</span></div>
+
+  <!-- ── NEW 2: mat-chip-listbox (Interests) ─────────────────── -->
+  <div class="form-section">
+    <p class="section-label">✦ Interests</p>
+    <label class="field-label">Select your areas of interest</label>
+    <mat-chip-listbox aria-label="Interests" class="chip-list" multiple>
+      @for (interest of allInterests; track interest) {
+        <mat-chip-option
+          [selected]="isSelected(interest)"
+          (click)="toggleInterest(interest)"
+        >
+          {{ interest }}
+        </mat-chip-option>
+      }
+    </mat-chip-listbox>
+  </div>
+
   <div class="luxury-divider"><span>✦</span></div>
 
   <div class="form-section">
@@ -98,6 +129,24 @@
     <mat-slider min="1" max="10" step="1" class="full-width">
       <input matSliderThumb [(ngModel)]="sliderValue" />
     </mat-slider>
+  </div>
+
+  <div class="luxury-divider"><span>✦</span></div>
+
+  <!-- ── NEW 3: mat-slide-toggle (Newsletter) ────────────────── -->
+  <div class="form-section preferences-row">
+    <p class="section-label" style="margin-top:0">✦ Preferences</p>
+    <div class="toggle-row">
+      <div class="toggle-label-group">
+        <span class="field-label" style="margin:0">Subscribe to Newsletter</span>
+        <span class="toggle-hint">Receive updates, tips & exclusive content</span>
+      </div>
+      <mat-slide-toggle
+        [(ngModel)]="newsletter"
+        color="primary"
+        aria-label="Subscribe to newsletter"
+      ></mat-slide-toggle>
+    </div>
   </div>
 
   <div class="luxury-divider"><span>✦</span></div>
@@ -129,8 +178,14 @@
         <span class="submitted-val">{{ submittedData().address }}</span>
         <span class="submitted-key">Birth Date</span>
         <span class="submitted-val">{{ submittedData().birthDate }}</span>
+        <span class="submitted-key">Country</span>
+        <span class="submitted-val">{{ submittedData().country }}</span>
+        <span class="submitted-key">Interests</span>
+        <span class="submitted-val">{{ submittedData().interests }}</span>
         <span class="submitted-key">Skill Level</span>
         <span class="submitted-val">{{ submittedData().skillLevel }}</span>
+        <span class="submitted-key">Newsletter</span>
+        <span class="submitted-val">{{ submittedData().newsletter }}</span>
       </div>
     </div>
   }

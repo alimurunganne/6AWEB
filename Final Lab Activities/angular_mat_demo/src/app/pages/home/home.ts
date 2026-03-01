@@ -9,6 +9,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';           // NEW
+import { MatSelectModule } from '@angular/material/select';         // NEW
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // NEW
 import { provideNativeDateAdapter } from '@angular/material/core';
 import {
   MAT_DIALOG_DATA,
@@ -43,6 +46,9 @@ export interface DialogData {
     MatSliderModule,
     MatDividerModule,
     MatTooltipModule,
+    MatChipsModule,       // NEW
+    MatSelectModule,      // NEW
+    MatSlideToggleModule, // NEW
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -79,6 +85,41 @@ export class HomeComponent {
 
   // Submitted data
   submittedData = signal<any>(null);
+
+  // ── NEW: Select (Country) ──────────────────────────────────────
+  country = '';
+  readonly countries = [
+    { code: 'PH', label: 'Philippines' },
+    { code: 'US', label: 'United States' },
+    { code: 'GB', label: 'United Kingdom' },
+    { code: 'JP', label: 'Japan' },
+    { code: 'AU', label: 'Australia' },
+    { code: 'CA', label: 'Canada' },
+    { code: 'DE', label: 'Germany' },
+    { code: 'FR', label: 'France' },
+    { code: 'SG', label: 'Singapore' },
+    { code: 'IN', label: 'India' },
+  ];
+
+  // ── NEW: Chips (Interests) ─────────────────────────────────────
+  readonly allInterests = ['UI/UX', 'Backend', 'DevOps', 'Mobile', 'AI/ML', 'Security', 'Cloud'];
+  selectedInterests: string[] = [];
+
+  toggleInterest(interest: string) {
+    const idx = this.selectedInterests.indexOf(interest);
+    if (idx >= 0) {
+      this.selectedInterests.splice(idx, 1);
+    } else {
+      this.selectedInterests.push(interest);
+    }
+  }
+
+  isSelected(interest: string): boolean {
+    return this.selectedInterests.includes(interest);
+  }
+
+  // ── NEW: Slide Toggle (Newsletter) ────────────────────────────
+  newsletter = false;
 
   constructor() {
     merge(this.email.statusChanges, this.email.valueChanges)
@@ -150,6 +191,9 @@ export class HomeComponent {
         address: this.address,
         birthDate: this.formatDate(this.birthDate),
         skillLevel: this.sliderValue(),
+        country: this.countries.find(c => c.code === this.country)?.label || '',
+        interests: this.selectedInterests.join(', ') || '—',
+        newsletter: this.newsletter ? 'Yes' : 'No',
       });
     }
   }
