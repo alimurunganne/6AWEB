@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-dark:   #94CDDE;
+  --blue-light:  #ADD8E5;
+  --yellow-soft: #FFFFE1;
+  --yellow-warm: #FFEEAF;
+  --text:        #2a6070;
+  --text-muted:  #7aaab8;
+  --dark:        #1e4f5e;
+  --white:       #ffffff;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--yellow-soft);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* ── HERO ── */
+.hero {
+  width: 100%;
+  padding: 52px 64px 48px;
+  background: linear-gradient(135deg, var(--yellow-soft) 30%, var(--blue-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -70px;
+  right: -50px;
+  width: 280px;
+  height: 280px;
+  background: var(--yellow-warm);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 28%;
+  width: 200px;
+  height: 200px;
+  background: var(--blue-dark);
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -1px;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}

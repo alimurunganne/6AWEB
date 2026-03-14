@@ -1,0 +1,349 @@
+/* ── MAIN LAYOUT ── */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 64px 80px;
+}
+
+/* ── ADD FORM PANEL ── */
+.form-panel {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 36px;
+  margin-bottom: 48px;
+  border: 1px solid var(--blue-light);
+  border-top: none;
+  box-shadow: 0 4px 24px rgba(148, 205, 222, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light), var(--yellow-warm));
+  border-radius: 20px 20px 0 0;
+}
+
+.form-panel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+
+.form-fields {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-fields-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  color: var(--text-muted);
+}
+
+/* ── INPUTS — yellow bg like the reference ── */
+input, select {
+  padding: 13px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #f0e8c0;
+  background: var(--yellow-soft);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #c8bfa0;
+}
+
+input:focus, select:focus {
+  border-color: var(--blue-dark);
+  background: #fffff5;
+  box-shadow: 0 0 0 3px rgba(148, 205, 222, 0.2);
+}
+
+select option {
+  background: var(--white);
+  color: var(--text);
+}
+
+/* ── ADD BUTTON — solid blue rounded ── */
+.btn-add {
+  padding: 13px 28px;
+  border-radius: 12px;
+  border: none;
+  background: var(--blue-dark);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(148, 205, 222, 0.4);
+}
+
+.btn-add:hover {
+  background: var(--dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(148, 205, 222, 0.4);
+}
+
+.btn-add:active {
+  transform: translateY(0);
+}
+
+/* ── COLLECTION HEADER ── */
+.collection-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.collection-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.book-count {
+  background: var(--yellow-warm);
+  color: var(--dark);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+/* ── BOOK GRID ── */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ── BOOK CARD — white with gradient top accent ── */
+.book-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px 22px 20px;
+  border: 1px solid #e4f1f6;
+  border-top: none;
+  box-shadow: 0 2px 16px rgba(148, 205, 222, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-light), var(--yellow-warm));
+  border-radius: 16px 16px 0 0;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(148, 205, 222, 0.22);
+}
+
+.book-info b {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.book-info p {
+  font-size: 14px;
+  color: #6a8a96;
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+
+.book-info .meta {
+  font-size: 12px;
+  color: #aacfda;
+  margin-bottom: 2px;
+}
+
+.book-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e8f5f9;
+}
+
+/* ── PRICE ── */
+.price {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── EDIT BUTTON — blue filled ── */
+.edit-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--blue-light);
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.edit-btn:hover {
+  background: var(--blue-dark);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ── REMOVE BUTTON — yellow warm outlined ── */
+.delete-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--yellow-warm);
+  background: transparent;
+  color: #9a7a10;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.delete-btn:hover {
+  background: var(--yellow-warm);
+  color: var(--dark);
+  transform: translateY(-1px);
+}
+
+/* ── EDIT MODE ── */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.edit-form input,
+.edit-form select {
+  font-size: 13px;
+  padding: 9px 12px;
+}
+
+.save-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--blue-dark);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.save-btn:hover {
+  background: var(--dark);
+  transform: translateY(-1px);
+}
+
+.cancel-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--blue-light);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.cancel-btn:hover {
+  background: var(--blue-light);
+  color: var(--dark);
+  transform: translateY(-1px);
+}
+
+/* ── EMPTY STATE ── */
+.empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 15px;
+  padding: 40px 0;
+  grid-column: 1 / -1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .book-grid { grid-template-columns: repeat(2, 1fr); }
+  .container { padding: 32px; }
+}
+
+@media (max-width: 600px) {
+  .book-grid { grid-template-columns: 1fr; }
+  .form-fields { grid-template-columns: 1fr; }
+  .form-fields-row2 { grid-template-columns: 1fr; }
+  .container { padding: 20px; }
+}

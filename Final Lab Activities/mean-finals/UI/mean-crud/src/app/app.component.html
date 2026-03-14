@@ -1,0 +1,109 @@
+<!-- HERO HEADER -->
+<div class="hero">
+  <h1>Books</h1>
+  <p>Your personal reading collection</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- ADD FORM PANEL -->
+  <div class="form-panel">
+    <h2>Add a New Book</h2>
+
+    <div class="form-fields">
+      <div class="field-group">
+        <label>Title</label>
+        <input [(ngModel)]="newTitle" placeholder="e.g. The Great Gatsby">
+      </div>
+      <div class="field-group">
+        <label>Description</label>
+        <input [(ngModel)]="newDesc" placeholder="Short description...">
+      </div>
+      <div class="field-group">
+        <label>Price</label>
+        <input [(ngModel)]="newPrice" type="number" placeholder="0.00">
+      </div>
+    </div>
+
+    <div class="form-fields-row2">
+      <div class="field-group">
+        <label>Author</label>
+        <input [(ngModel)]="newAuthor" placeholder="Author name">
+      </div>
+      <div class="field-group">
+        <label>Category</label>
+        <select [(ngModel)]="newCategory">
+          <option value="" disabled>-- Choose Category --</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Romance</option>
+          <option value="Science">Horror</option>
+          <option value="History">History</option>
+          <option value="Technology">Technology</option>
+          <option value="Education">Education</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-add" (click)="addBook()">+ Add Book</button>
+  </div>
+
+  <!-- COLLECTION -->
+  <div class="collection-header">
+    <h2>Your Collection</h2>
+    <span class="book-count">{{ books.length }} books</span>
+  </div>
+
+  <div class="book-grid">
+
+    <div class="book-card" *ngFor="let item of books">
+
+      <!-- DISPLAY MODE -->
+      <ng-container *ngIf="editingId !== item.id">
+        <div class="book-info">
+          <b>{{ item.title }}</b>
+          <p>{{ item.desc }}</p>
+          <span class="meta">Written by: {{ item.author }}</span>
+          <span class="meta">Genre: {{ item.category }}</span>
+        </div>
+        <div class="book-card-footer">
+          <span class="price">₱{{ item.price }}</span>
+          <div class="card-actions">
+            <button class="edit-btn" (click)="startEdit(item)">Edit</button>
+            <button class="delete-btn" (click)="deleteBook(item.id)">Remove</button>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- EDIT MODE -->
+      <ng-container *ngIf="editingId === item.id">
+        <div class="edit-form">
+          <input [(ngModel)]="editTitle" placeholder="Book Title">
+          <input [(ngModel)]="editDesc" placeholder="Book Description">
+          <input [(ngModel)]="editPrice" type="number" placeholder="Price">
+          <input [(ngModel)]="editAuthor" placeholder="Author Name">
+          <select [(ngModel)]="editCategory">
+            <option value="" disabled>-- Choose Category --</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Romance</option>
+            <option value="Science">Horror</option>
+            <option value="History">History</option>
+            <option value="Technology">Technology</option>
+            <option value="Education">Education</option>
+          </select>
+        </div>
+        <div class="card-actions">
+          <button class="save-btn" (click)="saveEdit(item.id)">Confirm</button>
+          <button class="cancel-btn" (click)="cancelEdit()">Discard</button>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <p class="empty" *ngIf="books.length === 0">No books found in your collection.</p>
+
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
